@@ -60,10 +60,12 @@ export default function BasicTable({ filterText }) {
 
   useEffect(() => {
     (async function() {
+      // for Local use /jugApi/coinParams.json
       const fetchApi = await fetch('https://bitbns.com/jugApi/coinParams.json');
       const response = await fetchApi.json();
       const resObj = response[0].data[0];
 
+      // for Local use /order/getTickerWithVolume
       const tickerApi = await fetch('https://bitbns.com/order/getTickerWithVolume');
       const tickerResponse = await tickerApi.json();
       const finalData = Object.keys(tickerResponse).reduce((acc, curr) => {

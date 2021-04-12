@@ -37,11 +37,11 @@ export default function Detail({ data }) {
 
   useEffect(() => {
     async function getData() {
-      const fetchApi = await fetch('/jugApi/coinParams.json');
+      const fetchApi = await fetch('https://bitbns.com/jugApi/coinParams.json');
       const response = await fetchApi.json();
       const resObj = response[0].data[0];
 
-      const tickerApi = await fetch('/order/getTickerWithVolume');
+      const tickerApi = await fetch('https://bitbns.com/order/getTickerWithVolume');
       const tickerResponse = await tickerApi.json();
       const finalData = Object.keys(tickerResponse).reduce((acc, curr) => {
         if(!resObj[curr.toLowerCase()] || !tickerResponse[curr]) {

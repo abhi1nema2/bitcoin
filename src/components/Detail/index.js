@@ -34,7 +34,6 @@ export default function Detail({ data }) {
   let { id } = useParams();
   const [detail, setDetail] = useState(null);
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   useEffect(() => {
     async function getData() {
@@ -60,7 +59,7 @@ export default function Detail({ data }) {
     } else {
       getData();
     }
-  }, []);
+  }, [data, id]);
   console.log(detail);
 
   return (

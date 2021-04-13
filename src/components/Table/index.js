@@ -21,21 +21,16 @@ const useStyles = makeStyles({
     minWidth: 400,
     marginTop: '10px'
   },
-  name: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px'
-  },
   coinType: {
     fontSize: '10px',
-    color: 'grey'
+    color: 'grey',
+    lineHeight: '16px'
   },
   link: {
     textDecoration: 'none',
     color: '#000',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around',
     gap: '10px'
   }
 });
@@ -61,12 +56,12 @@ export default function BasicTable({ filterText }) {
   useEffect(() => {
     (async function() {
       // for Local use /jugApi/coinParams.json
-      const fetchApi = await fetch('https://bitbns.com/jugApi/coinParams.json');
+      const fetchApi = await fetch('/jugApi/coinParams.json');
       const response = await fetchApi.json();
       const resObj = response[0].data[0];
 
       // for Local use /order/getTickerWithVolume
-      const tickerApi = await fetch('https://bitbns.com/order/getTickerWithVolume');
+      const tickerApi = await fetch('/order/getTickerWithVolume');
       const tickerResponse = await tickerApi.json();
       const finalData = Object.keys(tickerResponse).reduce((acc, curr) => {
         if(!resObj[curr.toLowerCase()] || !tickerResponse[curr]) {
